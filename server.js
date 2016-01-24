@@ -20,7 +20,7 @@ companiesRoute.get(function(request, response) {
   response.json(companies);
 });
 
-app.use('/api', router);
+app.use('/', router);
 app.listen(port, function() {
   console.log('Aplicação rodando na porta', port);
 });

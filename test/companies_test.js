@@ -6,7 +6,7 @@ var should = require('chai').should(),
 
 describe('Company', function() {
   it('returns a 200 response', function(done){
-    request.get('/api/empresas')
+    request.get('/empresas')
     .expect(200, done);
   });
 });
