@@ -4,12 +4,16 @@
   "description": "This is another version of the existing registrolivre system, which can be found on www.registrolivre.inf.br.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Bruna Pereira",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "supertest": "^1.1.0",
+    "mocha": "^2.3.4"
   }
 }

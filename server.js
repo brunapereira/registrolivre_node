@@ -5,6 +5,8 @@ var app = express();
 var port = process.env.PORT || 8765
 var router = express.Router();
 
+module.exports = app
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
