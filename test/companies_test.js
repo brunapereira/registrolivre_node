@@ -12,12 +12,37 @@ describe('Company', function() {
   });
 
   it('returns a 200 response when post a company', function(done) {
-    var company = { cnpj: '123456789-000', nome_fantasia: 'Test company' };
+    var company = { cnpj: '123456789-000', nomeFantasia: 'Test company' };
     request
       .post('/empresas')
-      .field('cnpj', company.cnpj)
-      .field('nome_fantasia', company.nome_fantasia)
+      .send(company)
       .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(error, response) {
+        response.status.should.equal(200);
+        response.body.cnpj.should.equal(company.cnpj);
+        response.body.nomeFantasia.should.equal(company.nomeFantasia);
+        done();
+      });
+  });
+
+  it('gets a company with specific id', function(done) {
+    request
+      .get('/empresas/1')
+      .set('Accept', 'application/json')
       .expect(200, done);
+  });
+
+  it('updates a company', function(done) {
+    var company = { cnpj: '123456789-123', nomeFantasia: 'Test edit company' };
+    request
+      .put('/empresas/1/edit')
+      .send(company)
+      .expect(200)
+      .end(function(error, response) {
+        response.body.data.cnpj.should.equal('123456789-123')
+        response.body.data.nomeFantasia.should.equal('Test edit company')
+        done();
+      });
   });
 });
