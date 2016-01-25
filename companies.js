@@ -9,4 +9,14 @@ router.get('/', function(request, response) {
   response.json(companies);
 });
 
+router.post('/', function(request, response) {
+  var company = {
+    cnpj: request.body.cnpj,
+    nome_fantasia: request.body.nome_fantasia
+  };
+
+  companies.push(company);
+  response.json(company);
+});
+
 module.exports = router;
