@@ -11,7 +11,7 @@ describe('Company', function() {
       .expect(200, done);
   });
 
-  it('returns a 200 response when post a company', function(done) {
+  it('posts a company', function(done) {
     var company = { cnpj: '123456789-000', nomeFantasia: 'Test company' };
     request
       .post('/empresas')
@@ -21,7 +21,7 @@ describe('Company', function() {
       .end(function(error, response) {
         response.status.should.equal(200);
         response.body.cnpj.should.equal(company.cnpj);
-        response.body.nomeFantasia.should.equal(company.nomeFantasia);
+        response.body.tradename.should.equal(company.nomeFantasia);
         done();
       });
   });
@@ -40,8 +40,8 @@ describe('Company', function() {
       .send(company)
       .expect(200)
       .end(function(error, response) {
-        response.body.data.cnpj.should.equal('123456789-123')
-        response.body.data.nomeFantasia.should.equal('Test edit company')
+        response.body.cnpj.should.equal('123456789-123')
+        response.body.tradename.should.equal('Test edit company')
         done();
       });
   });
